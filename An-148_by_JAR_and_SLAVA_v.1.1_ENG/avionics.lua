@@ -1,6 +1,6 @@
 size = { 2048, 2048 }
 
--- клипборд
+-- їїїїїїїї
 createProp("sim/custom/xap/clpbrd_chapters_select", "int");
 defineProperty("tankpump_l", globalPropertyf("sim/cockpit2/fuel/fuel_tank_pump_on[0]"));
 defineProperty("tankpump_c", globalPropertyf("sim/cockpit2/fuel/fuel_tank_pump_on[1]"));
@@ -25,39 +25,39 @@ createProp("sim/custom/xap/obog_stab_on", "int");
 
 defineProperty("is_startup_running",globalPropertyi("sim/operation/prefs/startup_running"));
 
-if get(is_startup_running) < 1 then -- выключаем насосы в баках и RAT
+if get(is_startup_running) < 1 then -- їїїїїїїїї їїїїїї ї їїїїї ї RAT
 set(tankpump_l, 0)
 set(tankpump_c, 0)
 set(tankpump_r, 0)
 set(rat, 0)
 end
 
--- гидравлика
-defineProperty("el_hyd_pump_on", globalPropertyi("sim/cockpit2/switches/electric_hydraulic_pump_on")); -- включена ли дефолтная электропомпа
-defineProperty("main_hyd_pump1_mode", globalPropertyi("sim/operation/failures/rel_hydpmp")); -- включена ли дефолтная помпа да=0 нет=6
-defineProperty("main_hyd_pump2_mode", globalPropertyi("sim/operation/failures/rel_hydpmp2")); -- включена ли дефолтная помпа да=0 нет=6
-createProp("sim/custom/xap/el_hyd_pump1_mode", "int"); -- режим электропомпы 1
-createProp("sim/custom/xap/el_hyd_pump2_mode", "int"); -- режим электропомпы 2
-createProp("sim/custom/xap/res_hyd_pump_mode", "int"); -- режим резервной электропомпы
-createProp("sim/custom/xap/is_auto_hyd_on", "int"); -- флаг включения авторежима
+-- їїїїїїїїїї
+defineProperty("el_hyd_pump_on", globalPropertyi("sim/cockpit2/switches/electric_hydraulic_pump_on")); -- їїїїїїїї її їїїїїїїїї їїїїїїїїїїїї
+defineProperty("main_hyd_pump1_mode", globalPropertyi("sim/operation/failures/rel_hydpmp")); -- їїїїїїїї її їїїїїїїїї їїїїї її=0 їїї=6
+defineProperty("main_hyd_pump2_mode", globalPropertyi("sim/operation/failures/rel_hydpmp2")); -- їїїїїїїї її їїїїїїїїї їїїїї її=0 їїї=6
+createProp("sim/custom/xap/el_hyd_pump1_mode", "int"); -- їїїїї їїїїїїїїїїїї 1
+createProp("sim/custom/xap/el_hyd_pump2_mode", "int"); -- їїїїї їїїїїїїїїїїї 2
+createProp("sim/custom/xap/res_hyd_pump_mode", "int"); -- їїїїї їїїїїїїїї їїїїїїїїїїїї
+createProp("sim/custom/xap/is_auto_hyd_on", "int"); -- їїїї їїїїїїїїї їїїїїїїїїї
 defineProperty("hyd_press_1", globalPropertyf("sim/cockpit2/hydraulics/indicators/hydraulic_pressure_1"));
 defineProperty("hyd_press_2", globalPropertyf("sim/cockpit2/hydraulics/indicators/hydraulic_pressure_2"));
 
 
-if get(is_startup_running) < 1 then -- выключаем электропомпу и основные насосы
+if get(is_startup_running) < 1 then -- їїїїїїїїї їїїїїїїїїїїї ї їїїїїїїї їїїїїї
 set(el_hyd_pump_on, 0)
 set(main_hyd_pump1_mode, 6)
 set(main_hyd_pump2_mode, 6)
 end
 
--- свет
-createProp("sim/custom/xap/cockpit_light_ratio_ovhd", "float"); -- подсветка оверхеда
-createProp("sim/custom/xap/cockpit_light_ratio_main", "float"); -- освещение кабины
+-- їїїї
+createProp("sim/custom/xap/cockpit_light_ratio_ovhd", "float"); -- їїїїїїїїї їїїїїїїї
+createProp("sim/custom/xap/cockpit_light_ratio_main", "float"); -- їїїїїїїїї їїїїїї
 defineProperty("cockpit_light_ratio_ovhd",globalPropertyf("sim/custom/xap/cockpit_light_ratio_ovhd"));
 defineProperty("cockpit_light_ratio_main",globalPropertyf("sim/custom/xap/cockpit_light_ratio_main"));
 set(cockpit_light_ratio_ovhd, 0.3)
 
--- компоненты
+-- їїїїїїїїїї
 components = {
 	flightplan {
 		position = {923, 978, 297, 420},
