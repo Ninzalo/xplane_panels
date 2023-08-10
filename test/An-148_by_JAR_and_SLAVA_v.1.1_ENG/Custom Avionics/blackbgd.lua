@@ -1,12 +1,12 @@
-size = {1920, 1200}
+size = {1920, 1080}
 
 -- background image
-defineProperty("blackbgd", loadImage("blackbackground.png", 0, 0, size[1], size[2] ))
+defineProperty("blackbgd", loadImage("blackbackground.png"))
 
 components = {
 
 texture { 
-        position = { 0, 0, size[1], size[2] },
         image = get(blackbgd)
+	position = { 0, 0, size[1], size[2] },
     },
 } 
