@@ -134,7 +134,7 @@ defineProperty("inner_marker_lit", globalPropertyi("sim/cockpit2/radios/indicato
 -----------------
 -- IMAGES
 -----------------
-defineProperty("background", loadImage("capt_panel.png"))
+defineProperty("background", loadImage("whitebackground.png"))
 defineProperty("mfi_1", loadImage("mfi_left.png"))
 defineProperty("on_light_big", loadImage("on_rectangle_light.png"))
 defineProperty("warn_light", loadImage("warn_light.png"))
