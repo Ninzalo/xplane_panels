@@ -4,8 +4,8 @@
 defineProperty("bgdblack", loadImage("blackbackground.png"))
 
 components = {
-    texture { 
-        position = { 0, 0, 1920, 1200 },
-        image = get(bgdblack)
-    },
+texture {
+	 image = get(bgdblack) 
+         position = {0, 0, 1920, 1200},
+ },
 }
