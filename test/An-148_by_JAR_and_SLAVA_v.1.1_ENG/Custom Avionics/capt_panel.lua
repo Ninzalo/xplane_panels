@@ -57,18 +57,18 @@ texture{ --СЭС
   --СЭС
 switch {
 	position = {1344, 1018, 40, 40},
-        state = function()
-        end,
+  state = function()
+  end,
 
-onMouseClick = function()
-	if not switch_push then
-		switch_push = true
-  end
-end,
-onMouseUp = function()
-	switch_push = false
-	return true;
-end,
+  onMouseClick = function()
+	  if not switch_push then
+		  switch_push = true
+    end
+  end,
+  onMouseUp = function()
+	  switch_push = false
+	  return true;
+  end,
 },
 
 ------------------------------------------------------------------------------------------------------------------------------------------
