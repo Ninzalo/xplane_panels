@@ -17,6 +17,8 @@ defineProperty("capt_subpanel", globalPropertyi("sim/an148/capt_subpanel"))
 -- IMAGES
 -----------------
 defineProperty("background", loadImage("whitebackground.png"))
+defineProperty("eng_mnemo", loadImage("eng_mnemo.png"))
+defineProperty("green_sector", loadImage("green_sector.png"))
 
 -- local switch_sound = loadSample('Custom Sounds/metal_switch.wav')
 -- local switch_plastic = loadSample('Custom Sounds/plastic_switch.wav')
@@ -37,5 +39,38 @@ texture{
 	image = get(background),
 	position = {0, 0, size[1], size[2]},
 },
+needle{ 
+	image = get(green_sector), --сектор левого двигателя
+	position = {1398, 654, 108, 108},
+	angle = function()
+		return get(eng1_temp)
+	end,
+	visible = function()
+		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
+},
+texture{ --ENG
+	image = get(eng_mnemo),
+	position = {1394, 162, 472, 621},
+	visible = function()
+		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
+},
+
+    -- eng1 digits
+    digitstape {
+        position = { 1447, 662, 35, 15},
+        image = digitsImage,
+        digits = 3,
+        showLeadingZeros = false,
+		allowNonRound = true,
+        value = function()
+			return map(get(engine_speed_rpm1), 0, 3867, 0, 100)
+		end,
+		valueEnabler = function()
+			return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+		end,
+    };
+
 ------------------------------------------------------------------------------------------------------------------------------------------
 }
