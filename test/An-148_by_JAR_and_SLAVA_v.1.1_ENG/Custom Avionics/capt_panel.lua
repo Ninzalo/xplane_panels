@@ -3,6 +3,8 @@ size = {1920, 1080}
 -- VARIABLES
 -----------------
 defineProperty("capt_subpanel", globalPropertyi("sim/an148/capt_subpanel"))
+defineProperty("dc_bus", globalPropertyi("sim/an148/dc_bus"))
+
 -----------------
 -- local mfi_mnemo_eng = 0
 -- local mfi_mnemo_fuel = 0
@@ -18,10 +20,11 @@ defineProperty("capt_subpanel", globalPropertyi("sim/an148/capt_subpanel"))
 -----------------
 defineProperty("background", loadImage("whitebackground.png"))
 defineProperty("rotary_small", loadImage("rotary_small.png"))
+defineProperty("yellow_light", loadImage("yellow_light.png"))
 
 -- local switch_sound = loadSample('Custom Sounds/metal_switch.wav')
 -- local switch_plastic = loadSample('Custom Sounds/plastic_switch.wav')
--- local switch_push = false
+local switch_push = false
 -- local vor1_btn = 1
 -- local vor2_btn = 1
 -- local adf1_btn = 0
@@ -43,5 +46,30 @@ texture{
 	image = get(rotary_small),
 	position = {329, 391, 50, 50},
 },
+texture{ --СЭС
+	image = get(yellow_light),
+	position = {1350, 1049, 39, 8},
+	visible = function()
+		return get(dc_bus) == 1
+	end,
+},
+
+  --СЭС
+switch {
+	position = {1344, 1018, 40, 40},
+        state = function()
+        end,
+
+onMouseClick = function()
+	if not switch_push then
+		switch_push = true
+  end
+end,
+onMouseUp = function()
+	switch_push = false
+	return true;
+end,
+},
+
 ------------------------------------------------------------------------------------------------------------------------------------------
 }
