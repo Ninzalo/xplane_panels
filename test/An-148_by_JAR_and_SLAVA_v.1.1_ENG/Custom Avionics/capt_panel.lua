@@ -58,19 +58,15 @@ texture{
   --СЭС
 switch {
 	position = {1344, 1018, 40, 40},
-  state = function()
-  end,
 
   onMouseClick = function()
-	  if not switch_push then
-		  switch_push = true
-    end
+    switch_push = not switch_push
     if switch_push then
-      ses_yellow_light = not ses_yellow_light
+      -- ses_yellow_light = not ses_yellow_light
       texture{ --СЭС
         image = get(yellow_light),
         position = {1350, 1049, 39, 8},
-        visible = ses_yellow_light
+        visible = true
       }
     end
   end,
