@@ -6,6 +6,7 @@ defineProperty("capt_subpanel", globalPropertyi("sim/an148/capt_subpanel"))
 defineProperty("dc_bus", globalPropertyi("sim/an148/dc_bus"))
 
 -----------------
+local ses_yellow_light = false
 -- local mfi_mnemo_eng = 0
 -- local mfi_mnemo_fuel = 0
 -- local mfi_mnemo_conf = 0
@@ -46,13 +47,13 @@ texture{
 	image = get(rotary_small),
 	position = {329, 391, 50, 50},
 },
-texture{ --СЭС
-	image = get(yellow_light),
-	position = {1350, 1049, 39, 8},
-	visible = function()
-		return get(dc_bus) == 1
-	end,
-},
+-- texture{ --СЭС
+-- 	image = get(yellow_light),
+-- 	position = {1350, 1049, 39, 8},
+-- 	visible = function()
+-- 		return get(dc_bus) == 1
+-- 	end,
+-- },
 
   --СЭС
 switch {
@@ -63,6 +64,14 @@ switch {
   onMouseClick = function()
 	  if not switch_push then
 		  switch_push = true
+    end
+    if switch_push then
+      ses_yellow_light = not ses_yellow_light
+      texture{ --СЭС
+        image = get(yellow_light),
+        position = {1350, 1049, 39, 8},
+        visible = ses_yellow_light
+      }
     end
   end,
   onMouseUp = function()
