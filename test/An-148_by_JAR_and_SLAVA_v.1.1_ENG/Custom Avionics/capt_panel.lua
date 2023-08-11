@@ -60,7 +60,9 @@ switch {
 	position = {1344, 1018, 40, 40},
 
   onMouseClick = function()
-    switch_push = not switch_push
+    if not switch_push then
+      switch_push = true
+    end
     if switch_push then
       -- ses_yellow_light = not ses_yellow_light
       texture{ --СЭС
