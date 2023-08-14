@@ -6,8 +6,7 @@ defineProperty("capt_subpanel", globalPropertyi("sim/an148/capt_subpanel"))
 defineProperty("dc_bus", globalPropertyi("sim/an148/dc_bus"))
 
 -----------------
-local ses_yellow_light = false
--- local mfi_mnemo_eng = 0
+local mfi_mnemo_eng = 0
 -- local mfi_mnemo_fuel = 0
 -- local mfi_mnemo_conf = 0
 -- local mfi_mnemo_air = 0
@@ -22,8 +21,7 @@ local ses_yellow_light = false
 defineProperty("background", loadImage("capt_panel_new.png"))
 defineProperty("rotary_small", loadImage("rotary_small.png"))
 defineProperty("yellow_light", loadImage("yellow_light.png"))
-
-local y_offset = 17
+defineProperty("eng_mnemo", loadImage("eng_mnemo.png"))
 -- local switch_sound = loadSample('Custom Sounds/metal_switch.wav')
 -- local switch_plastic = loadSample('Custom Sounds/plastic_switch.wav')
 local switch_push = false
@@ -47,6 +45,40 @@ texture{
 	image = get(background),
 	position = {0, 0, size[1], size[2]},
 },
+
+--ДВИГ
+switch {
+	position = coords{1370, 146, 40, 40},
+  state = function()
+		return mfi_mnemo_eng ~= 0
+  end,
+	
+onMouseClick = function()
+	if not switch_push then
+		switch_push = true
+		if mfi_mnemo_eng ~= 0 then
+			mfi_mnemo_eng = 0
+		else
+				mfi_mnemo_eng = 1
+		end
+	end
+return true;
+end,	
+
+onMouseUp = function()
+	switch_push = false
+	return true;
+end,
+},
+
+texture{ --ENG
+	image = get(eng_mnemo),
+	position = coords{1626, 607, 483, 639},
+	visible = function()
+    return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
+},
+
 -- СВЯЗЬ (ПРОСЛУШ)
 texture{ 
 	image = get(rotary_small),
