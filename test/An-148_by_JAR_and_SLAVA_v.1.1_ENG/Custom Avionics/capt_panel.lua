@@ -54,7 +54,14 @@ local function coords(x_center, y_center, width, height)
     height
   }
 end
-
+local function coords_converter(x_old, y_old, width, height)
+  return coords(
+    x_old + (width / 2),
+    size[2] - y_old + (height / 2),
+    width,
+    height
+  )
+end
 components = {
 ------------------------------------------------------------------------------
 --background
@@ -81,7 +88,7 @@ texture{
 needle{ 
 	image = get(green_sector), --сектор левого двигателя
 	-- position = {1398, 654, 108, 108},
-	position = coords(1344, 480, 108, 108),
+	position = coords_converter(1398, 654, 108, 108),
 	angle = function()
 		return get(eng1_temp)
 	end,
