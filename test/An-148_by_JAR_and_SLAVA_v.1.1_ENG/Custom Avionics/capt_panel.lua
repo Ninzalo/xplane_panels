@@ -23,7 +23,8 @@ defineProperty("background", loadImage("capt_panel_new.png"))
 defineProperty("rotary_small", loadImage("rotary_small.png"))
 defineProperty("yellow_light", loadImage("yellow_light.png"))
 
-local offset = 40
+local x_offset = 40
+local y_offset = 40
 -- local switch_sound = loadSample('Custom Sounds/metal_switch.wav')
 -- local switch_plastic = loadSample('Custom Sounds/plastic_switch.wav')
 local switch_push = false
@@ -46,7 +47,7 @@ texture{
 
 texture{ 
 	image = get(rotary_small),
-	position = {595 - offset, 608 - offset, 50, 50},
+	position = {595 - 25, 608 - 25, 50, 50},
 },
 -- texture{ 
 -- 	image = get(rotary_small),
