@@ -1,4 +1,4 @@
-size = {1920, 1080}
+size = {1920, 1200}
 -----------------
 -- VARIABLES
 -----------------
@@ -19,7 +19,7 @@ local ses_yellow_light = false
 -----------------
 -- IMAGES
 -----------------
-defineProperty("background", loadImage("whitebackground.png"))
+defineProperty("background", loadImage("capt_panel_new.png"))
 defineProperty("rotary_small", loadImage("rotary_small.png"))
 defineProperty("yellow_light", loadImage("yellow_light.png"))
 
