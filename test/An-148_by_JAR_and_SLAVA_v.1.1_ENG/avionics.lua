@@ -16,7 +16,7 @@ defineProperty("closeImage", loadImage("close.png"))
 
 -----------------------------------------------------------------------------------------------------
 capt_panel = subpanel {
-position = { 40, 0, 1920, 1200 }; 
+position = { 0, 0, 1920, 1200 }; 
 noBackground = true; --Запрет на появление фона
 noClose = true; --Запрет на появление крестика в углу если true
 noMove = true; --Запрет на передвижение если true
