@@ -64,6 +64,13 @@ texture{ --ENG
     return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
 	end,
 },
+texture{
+	image = get(yellow_light),
+	position = coords(1370, 131, 29, 8),
+	visible = function()
+    return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
+},
 switch {
 	position = coords(1370, 146, 46, 45),
   state = function()
