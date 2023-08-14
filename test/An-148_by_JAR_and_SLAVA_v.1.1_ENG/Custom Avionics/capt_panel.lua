@@ -47,7 +47,7 @@ texture{
 
 texture{ 
 	image = get(rotary_small),
-	position = {595 - 25, 608 - 10, 50, 50},
+	position = {595 - 25, 608 - 25 - 15, 50, 50},
 },
 -- texture{ 
 -- 	image = get(rotary_small),
