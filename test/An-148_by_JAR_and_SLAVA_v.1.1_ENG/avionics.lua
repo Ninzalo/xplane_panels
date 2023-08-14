@@ -16,7 +16,7 @@ defineProperty("closeImage", loadImage("close.png"))
 
 -----------------------------------------------------------------------------------------------------
 capt_panel = subpanel {
-position = { 0, 0, 1920 * coef, 1080 * coef }; 
+position = { 0, 0, 1920 * coef, 1200 * coef }; 
 noBackground = true; --Запрет на появление фона
 noClose = true; --Запрет на появление крестика в углу если true
 noMove = true; --Запрет на передвижение если true
@@ -26,7 +26,7 @@ savePosition = true; --Задание размеров и позиций вру�
 name = "capt_panel";
 components = {
 	capt_panel{
-		position = { 0, 0, 1920 * coef, 1080 * coef },
+		position = { 0, 0, 1920 * coef, 1200 * coef },
 	};
 };
 }
