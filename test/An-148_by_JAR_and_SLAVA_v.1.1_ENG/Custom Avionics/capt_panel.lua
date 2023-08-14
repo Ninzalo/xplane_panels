@@ -47,37 +47,37 @@ texture{
 },
 
 --ДВИГ
-switch {
-	position = coords(1370, 146, 40, 40),
-  state = function()
-		return mfi_mnemo_eng ~= 0
-  end,
-	
-onMouseClick = function()
-	if not switch_push then
-		switch_push = true
-		if mfi_mnemo_eng ~= 0 then
-			mfi_mnemo_eng = 0
-		else
-				mfi_mnemo_eng = 1
-		end
-	end
-return true;
-end,	
-
-onMouseUp = function()
-	switch_push = false
-	return true;
-end,
-},
-
 texture{ --ENG
 	image = get(eng_mnemo),
 	position = coords(1626, 607, 483, 639),
 	visible = function()
-    return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+    return get(mfi_mnemo_eng) == 1
 	end,
 },
+switch {
+	position = coords(1370, 146, 46, 45),
+  state = function()
+		return mfi_mnemo_eng ~= 0
+  end,
+	
+  onMouseClick = function()
+    if not switch_push then
+      switch_push = true
+      if mfi_mnemo_eng ~= 0 then
+        mfi_mnemo_eng = 0
+      else
+          mfi_mnemo_eng = 1
+      end
+    end
+    return true;
+  end,
+
+  onMouseUp = function()
+    switch_push = false
+    return true;
+  end,
+},
+
 
 -- СВЯЗЬ (ПРОСЛУШ)
 texture{ 
