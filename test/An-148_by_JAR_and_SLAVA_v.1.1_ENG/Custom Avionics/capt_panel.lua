@@ -51,7 +51,7 @@ texture{ --ENG
 	image = get(eng_mnemo),
 	position = coords(1626, 607, 483, 639),
 	visible = function()
-    return get(mfi_mnemo_eng) == 1
+    return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
 	end,
 },
 switch {
