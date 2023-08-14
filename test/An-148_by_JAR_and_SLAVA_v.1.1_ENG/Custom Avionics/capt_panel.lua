@@ -68,7 +68,8 @@ texture{
 -- СВЯЗЬ (ДИН) 
 texture{ 
 	image = get(rotary_small),
-	position = coords(640, 663, 50, 50),
+	-- position = coords(640, 663, 50, 50),
+	position = {615, 512, 50, 50}
 },
 
 
