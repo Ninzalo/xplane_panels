@@ -48,7 +48,7 @@ texture{
 
 --ДВИГ
 switch {
-	position = coords{1370, 146, 40, 40},
+	position = coords(1370, 146, 40, 40),
   state = function()
 		return mfi_mnemo_eng ~= 0
   end,
@@ -73,7 +73,7 @@ end,
 
 texture{ --ENG
 	image = get(eng_mnemo),
-	position = coords{1626, 607, 483, 639},
+	position = coords(1626, 607, 483, 639),
 	visible = function()
     return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
 	end,
