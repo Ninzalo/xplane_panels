@@ -3,6 +3,7 @@ size = {1920, 1200}
 -- VARIABLES
 -----------------
 defineProperty("capt_subpanel", globalPropertyi("sim/an148/capt_subpanel"))
+defineProperty("gpu_on_power", globalPropertyf("sim/cockpit/electrical/gpu_on"))
 defineProperty("inverter_on_1", globalPropertyi("sim/cockpit2/electrical/inverter_on[0]"))
 defineProperty("inverter_on_2", globalPropertyi("sim/cockpit2/electrical/inverter_on[1]"))
 defineProperty("inverter_on_3", globalPropertyi("sim/an148/inverter_on_3"))
