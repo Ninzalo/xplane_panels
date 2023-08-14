@@ -37,7 +37,7 @@ local function map(x, in_min, in_max, out_min, out_max)
 end
 
 local function coords(x_center, y_center, width, height)
-  return {x_center - (width / 2), y_center - (height / 2) - y_offset, width, height}
+  return {x_center - (width / 2), size[2] - y_center - (height / 2), width, height}
 end
 
 components = {
@@ -68,8 +68,8 @@ texture{
 -- СВЯЗЬ (ДИН) 
 texture{ 
 	image = get(rotary_small),
-	-- position = coords(640, 663, 50, 50),
-	position = {615, 512, 50, 50}
+	position = coords(640, 663, 50, 50),
+	-- position = {615, 512, 50, 50}
 },
 
 
