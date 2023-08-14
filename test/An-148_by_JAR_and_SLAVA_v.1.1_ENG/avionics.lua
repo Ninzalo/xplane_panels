@@ -37,6 +37,6 @@ panel_logic {
 },
 -- gauges_logic{},
 -- --msrp{},
--- elec_logic{},
+elec_logic{},
 -- hot_start{},
 }
