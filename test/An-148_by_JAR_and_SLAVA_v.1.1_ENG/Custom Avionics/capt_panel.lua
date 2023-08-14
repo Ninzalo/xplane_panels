@@ -47,17 +47,31 @@ texture{
 	image = get(background),
 	position = {0, 0, size[1], size[2]},
 },
--- right rotary
+-- СВЯЗЬ (ПРОСЛУШ)
 texture{ 
 	image = get(rotary_small),
 	position = coords(595, 608, 50, 50),
 },
 
--- left rotary
+-- СВЯЗЬ (РАДИО) 
 texture{ 
 	image = get(rotary_small),
 	position = coords(398, 608, 50, 50),
 },
+
+-- СВЯЗЬ (СПУ) 
+texture{ 
+	image = get(rotary_small),
+	position = coords(353, 663, 50, 50),
+},
+
+-- СВЯЗЬ (ДИН) 
+texture{ 
+	image = get(rotary_small),
+	position = coords(640, 663, 50, 50),
+},
+
+
 -- texture{ 
 -- 	image = get(rotary_small),
 -- 	position = {329, 391, 50, 50},
