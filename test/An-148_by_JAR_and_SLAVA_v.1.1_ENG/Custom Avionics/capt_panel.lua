@@ -47,16 +47,17 @@ texture{
 	image = get(background),
 	position = {0, 0, size[1], size[2]},
 },
-
+-- right rotary
 texture{ 
 	image = get(rotary_small),
 	position = coords(595, 608, 50, 50),
 },
 
--- texture{ 
--- 	image = get(rotary_small),
--- 	position = {595 - 25, 608 - 25 - 17, 50, 50},
--- },
+-- left rotary
+texture{ 
+	image = get(rotary_small),
+	position = coords(398, 608, 50, 50),
+},
 -- texture{ 
 -- 	image = get(rotary_small),
 -- 	position = {329, 391, 50, 50},
