@@ -14,6 +14,7 @@ defineProperty("capt_subpanel", globalPropertyi("sim/an148/capt_subpanel"))
 -- defineProperty("battery_on_2", globalPropertyi("sim/cockpit2/electrical/battery_on[1]"))
 -- defineProperty("battery_on_3", globalPropertyi("sim/cockpit2/electrical/battery_on[2]"))
 defineProperty("dc_bus", globalPropertyi("sim/an148/dc_bus"))
+defineProperty("eng1_temp", globalPropertyf("sim/an148/eng1_temp"))
 
 -----------------
 local mfi_mnemo_eng = 0
@@ -31,6 +32,7 @@ local mfi_mnemo_eng = 0
 defineProperty("background", loadImage("capt_panel_new.png"))
 defineProperty("rotary_small", loadImage("rotary_small.png"))
 defineProperty("yellow_light", loadImage("yellow_light.png"))
+defineProperty("green_sector", loadImage("green_sector.png"))
 defineProperty("eng_mnemo", loadImage("eng_mnemo.png"))
 -- local switch_sound = loadSample('Custom Sounds/metal_switch.wav')
 -- local switch_plastic = loadSample('Custom Sounds/plastic_switch.wav')
@@ -45,11 +47,16 @@ local function map(x, in_min, in_max, out_min, out_max)
 end
 
 local function coords(x_center, y_center, width, height)
-  return {x_center - (width / 2), size[2] - y_center - (height / 2), width, height}
+  return {
+    x_center - (width / 2),
+    size[2] - y_center - (height / 2),
+    width,
+    height
+  }
 end
 
 components = {
-------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 --background
 texture{ 
 	image = get(background),
@@ -57,7 +64,7 @@ texture{
 },
 
 --ДВИГ
-texture{ --ENG
+texture{
 	image = get(eng_mnemo),
 	position = coords(1626, 607, 472, 621),
 	visible = function()
@@ -69,6 +76,17 @@ texture{
 	position = coords(1370, 131, 29, 8),
 	visible = function()
     return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
+},
+needle{ 
+	image = get(green_sector), --сектор левого двигателя
+	-- position = {1398, 654, 108, 108},
+	position = coords(1344, 480, 108, 108),
+	angle = function()
+		return get(eng1_temp)
+	end,
+	visible = function()
+		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
 	end,
 },
 switch {
