@@ -23,8 +23,7 @@ defineProperty("background", loadImage("capt_panel_new.png"))
 defineProperty("rotary_small", loadImage("rotary_small.png"))
 defineProperty("yellow_light", loadImage("yellow_light.png"))
 
-local x_offset = 40
-local y_offset = 40
+local y_offset = 17
 -- local switch_sound = loadSample('Custom Sounds/metal_switch.wav')
 -- local switch_plastic = loadSample('Custom Sounds/plastic_switch.wav')
 local switch_push = false
@@ -37,6 +36,10 @@ local function map(x, in_min, in_max, out_min, out_max)
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 end
 
+local function coords(x_center, y_center, width, height)
+  return {x_center - (width / 2), y_center - (height / 2) - y_offset, width, height}
+end
+
 components = {
 ------------------------------------------------------------------------------------------------------------------------------------------
 --background
@@ -47,8 +50,13 @@ texture{
 
 texture{ 
 	image = get(rotary_small),
-	position = {595 - 25, 608 - 25 - 17, 50, 50},
+	position = coords(595, 608, 50, 50),
 },
+
+-- texture{ 
+-- 	image = get(rotary_small),
+-- 	position = {595 - 25, 608 - 25 - 17, 50, 50},
+-- },
 -- texture{ 
 -- 	image = get(rotary_small),
 -- 	position = {329, 391, 50, 50},
