@@ -3,6 +3,15 @@ size = {1920, 1200}
 -- VARIABLES
 -----------------
 defineProperty("capt_subpanel", globalPropertyi("sim/an148/capt_subpanel"))
+defineProperty("inverter_on_1", globalPropertyi("sim/cockpit2/electrical/inverter_on[0]"))
+defineProperty("inverter_on_2", globalPropertyi("sim/cockpit2/electrical/inverter_on[1]"))
+defineProperty("inverter_on_3", globalPropertyi("sim/an148/inverter_on_3"))
+defineProperty("generator_on_1", globalPropertyi("sim/cockpit2/electrical/generator_on[0]"))
+defineProperty("generator_on_2", globalPropertyi("sim/cockpit2/electrical/generator_on[1]"))
+defineProperty("generator_on_apu", globalPropertyi("sim/cockpit2/electrical/APU_generator_on"))
+defineProperty("battery_on_1", globalPropertyi("sim/cockpit2/electrical/battery_on[0]"))
+defineProperty("battery_on_2", globalPropertyi("sim/cockpit2/electrical/battery_on[1]"))
+defineProperty("battery_on_3", globalPropertyi("sim/cockpit2/electrical/battery_on[2]"))
 defineProperty("dc_bus", globalPropertyi("sim/an148/dc_bus"))
 
 -----------------
