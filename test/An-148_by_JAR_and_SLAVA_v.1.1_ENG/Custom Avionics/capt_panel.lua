@@ -43,10 +43,10 @@ texture{
 	position = {0, 0, size[1], size[2]},
 },
 
-texture{ 
-	image = get(rotary_small),
-	position = {329, 391, 50, 50},
-},
+-- texture{ 
+-- 	image = get(rotary_small),
+-- 	position = {329, 391, 50, 50},
+-- },
 -- texture{ --СЭС
 -- 	image = get(yellow_light),
 -- 	position = {1350, 1049, 39, 8},
@@ -54,29 +54,5 @@ texture{
 -- 		return get(dc_bus) == 1
 -- 	end,
 -- },
-
-  --СЭС
-switch {
-	position = {1344, 1018, 40, 40},
-
-  onMouseClick = function()
-    if not switch_push then
-      switch_push = true
-    end
-    if switch_push then
-      -- ses_yellow_light = not ses_yellow_light
-      texture{ --СЭС
-        image = get(yellow_light),
-        position = {1350, 1049, 39, 8},
-        visible = true
-      }
-    end
-  end,
-  onMouseUp = function()
-	  switch_push = false
-	  return true;
-  end,
-},
-
 ------------------------------------------------------------------------------------------------------------------------------------------
 }
