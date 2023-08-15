@@ -3,6 +3,7 @@
 createProp("sim/an148/capt_subpanel", "int", 1);
 createProp("sim/an148/dc_bus", "int", 0);
 createProp("sim/an148/eng1_temp", "int", 0);
+createProp("sim/an148/eng2_temp", "int", 0);
 --------------------
 -- PANELS SIZE
 --------------------

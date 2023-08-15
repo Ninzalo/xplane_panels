@@ -93,7 +93,7 @@ texture{
 needle{ 
 	image = get(green_sector),
 	-- position = {1398, 654, 108, 108},
-	position = coords_converter(1398, 654, 108, 108),
+	position = coords_converter(1398.5, 654, 108, 108),
 	angle = function()
 		return get(eng1_temp)
 	end,
@@ -103,16 +103,16 @@ needle{
 },
 
 ---- Сектор температуры второго двигателя
--- needle{ 
--- 	image = get(green_sector),
--- 	position = coords_converter(1511, 654, 108, 108),
--- 	angle = function()
--- 		return get(eng2_temp)
--- 	end,
--- 	visible = function()
--- 		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
--- 	end,
--- },
+needle{ 
+	image = get(green_sector),
+	position = coords_converter(1511.5, 654, 108, 108),
+	angle = function()
+		return get(eng2_temp)
+	end,
+	visible = function()
+		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
+},
 
 ---- Дисплей ДВИГ
 texture{
@@ -123,17 +123,6 @@ texture{
 	end,
 },
 
--------------------- УДАЛИТЬ ПОСЛЕ ПРОВЕРКИ
-needle{ 
-	image = get(green_sector),
-	position = coords_converter(1511, 654, 108, 108),
-	angle = function()
-		return get(eng2_temp)
-	end,
-	visible = function()
-		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
-	end,
-},
 ---- Температура первого двигателя
 digitstape {
     -- position = { 1404, 688, 35, 15},
