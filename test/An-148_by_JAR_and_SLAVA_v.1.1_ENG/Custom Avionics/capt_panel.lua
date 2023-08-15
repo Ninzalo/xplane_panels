@@ -386,7 +386,7 @@ digitstape {
 ---- Количество масла первого двигателя Qм л
 tape {
   -- position = coords_converter(1485, 352, 9, 92),
-  position = coords_converter(1483, 352, 9, 92),
+  position = coords_converter(1484, 352, 9, 92),
   image = get(oil_tape),
   window = {1.0, 0.5},
   scrollY = function()
@@ -400,7 +400,7 @@ tape {
 ---- Количество масла второго двигателя Qм л
 tape {
   -- position = coords_converter(1610, 352, 9, 92),
-  position = coords_converter(1608, 352, 9, 92),
+  position = coords_converter(1609, 352, 9, 92),
   image = get(oil_tape),
   window = {1.0, 0.5},
   scrollY = function()
