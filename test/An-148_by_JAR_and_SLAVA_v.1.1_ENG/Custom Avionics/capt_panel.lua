@@ -81,7 +81,7 @@ texture{
 needle{ 
 	image = get(green_sector), --сектор левого двигателя
 	-- position = {1398, 654, 108, 108},
-	position = coords_converter(1396, 654, 108, 108),
+	position = coords_converter(1395, 654, 108, 108),
 	angle = function()
 		return get(eng1_temp)
 	end,
