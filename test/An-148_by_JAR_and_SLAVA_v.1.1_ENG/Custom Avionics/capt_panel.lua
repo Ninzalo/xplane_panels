@@ -22,7 +22,9 @@ defineProperty("eng2_temp", globalPropertyf("sim/an148/eng2_temp"))
 -- Температура первого и второго двигателей (цифры)
 defineProperty("ENGN_EGT_c1", globalPropertyf("sim/flightmodel/engine/ENGN_EGT_c[0]"))
 defineProperty("ENGN_EGT_c2", globalPropertyf("sim/flightmodel/engine/ENGN_EGT_c[1]"))
-
+-- Давление масла первого и второго двигателей (сектор)
+defineProperty("oil_pressure1", globalPropertyf("sim/cockpit2/engine/indicators/oil_pressure_psi[0]"))
+defineProperty("oil_pressure2", globalPropertyf("sim/cockpit2/engine/indicators/oil_pressure_psi[1]"))
 -----------------
 local mfi_mnemo_eng = 0
 -- local mfi_mnemo_fuel = 0
@@ -64,7 +66,7 @@ local function coords(x_center, y_center, width, height)
 end
 local function coords_converter(x_old, y_old, width, height)
   return coords(
-    x_old - 3 + (width / 2),
+    x_old - 2.5 + (width / 2),
     size[2] - y_old - 120 - (height / 2),
     width,
     height
@@ -93,7 +95,7 @@ texture{
 needle{ 
 	image = get(green_sector),
 	-- position = {1398, 654, 108, 108},
-	position = coords_converter(1398.5, 654, 108, 108),
+	position = coords_converter(1398, 654, 108, 108),
 	angle = function()
 		return get(eng1_temp)
 	end,
@@ -105,7 +107,7 @@ needle{
 ---- Сектор температуры второго двигателя
 needle{ 
 	image = get(green_sector),
-	position = coords_converter(1511.5, 654, 108, 108),
+	position = coords_converter(1511, 654, 108, 108),
 	angle = function()
 		return get(eng2_temp)
 	end,
@@ -114,6 +116,29 @@ needle{
 	end,
 },
 
+---- Сектор давления масла первого двигателя
+needle{
+	image = get(green_sector),
+	position = coords_converter(1402, 374, 68, 68),
+	angle = function()
+		return map(get(oil_pressure1), 0, 5, 0, 180)
+	end,
+	visible = function()
+		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
+},
+
+---- Сектор давления масла второго двигателя
+needle{
+	image = get(green_sector),
+	position = coords_converter(1529, 374, 68, 68),
+	angle = function()
+		return map(get(oil_pressure2), 0, 5, 0, 180)
+	end,
+	visible = function()
+		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
+},
 ---- Дисплей ДВИГ
 texture{
 	image = get(eng_mnemo),
@@ -153,7 +178,45 @@ digitstape {
     valueEnabler = function()
       return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
     end,
-};	
+},
+
+---- Давление масла первого двигателя (цифры)
+digitstape {
+  position = coords_converter(1408, 390, 25, 15),
+  image = digitsImage,
+  digits = 2,
+  showLeadingZeros = false,
+  allowNonRound = true,
+  fractional = 1,
+  value = function()
+    return get(oil_pressure1)
+  end,
+  valueEnabler = function()
+    return get(mfi_mnemo_eng) == 1
+  end,
+  visible = function()
+    return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+  end,
+},
+
+---- Давление масла второго двигателя (цифры)
+digitstape {
+  position = coords_converter(1535, 390, 25, 15),
+  image = digitsImage,
+  digits = 2,
+  showLeadingZeros = false,
+  allowNonRound = true,
+  fractional = 1,
+  value = function()
+    return get(oil_pressure2)
+  end,
+  valueEnabler = function()
+    return get(mfi_mnemo_eng) == 1
+  end,
+  visible = function()
+    return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+  end,
+},
 
 ---- Переключение видимости дисплея двигателей  
 switch {
