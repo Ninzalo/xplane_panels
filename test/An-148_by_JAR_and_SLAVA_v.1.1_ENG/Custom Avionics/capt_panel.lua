@@ -57,7 +57,7 @@ end
 local function coords_converter(x_old, y_old, width, height)
   return coords(
     x_old + (width / 2),
-    size[2] - y_old - (height / 2),
+    y_old + 120 + (height / 2),
     width,
     height
   )
