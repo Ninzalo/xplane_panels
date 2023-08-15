@@ -13,8 +13,15 @@ defineProperty("capt_subpanel", globalPropertyi("sim/an148/capt_subpanel"))
 -- defineProperty("battery_on_1", globalPropertyi("sim/cockpit2/electrical/battery_on[0]"))
 -- defineProperty("battery_on_2", globalPropertyi("sim/cockpit2/electrical/battery_on[1]"))
 -- defineProperty("battery_on_3", globalPropertyi("sim/cockpit2/electrical/battery_on[2]"))
+
+-- Самолёт под током
 defineProperty("dc_bus", globalPropertyi("sim/an148/dc_bus"))
+-- Температура первого и второго двигателей (сектор)
 defineProperty("eng1_temp", globalPropertyf("sim/an148/eng1_temp"))
+defineProperty("eng2_temp", globalPropertyf("sim/an148/eng2_temp"))
+-- Температура первого и второго двигателей (цифры)
+defineProperty("ENGN_EGT_c1", globalPropertyf("sim/flightmodel/engine/ENGN_EGT_c[0]"))
+defineProperty("ENGN_EGT_c2", globalPropertyf("sim/flightmodel/engine/ENGN_EGT_c[1]"))
 
 -----------------
 local mfi_mnemo_eng = 0
@@ -56,7 +63,7 @@ local function coords(x_center, y_center, width, height)
 end
 local function coords_converter(x_old, y_old, width, height)
   return coords(
-    x_old + (width / 2),
+    x_old - 3 + (width / 2),
     size[2] - y_old - 120 - (height / 2),
     width,
     height
@@ -71,6 +78,8 @@ texture{
 },
 
 --ДВИГ
+
+---- Индикация над кнопкой "ДВИГ"
 texture{
 	image = get(yellow_light),
 	position = coords(1370, 131, 29, 8),
@@ -78,10 +87,12 @@ texture{
     return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
 	end,
 },
+
+---- Сектор температуры первого двигателя
 needle{ 
-	image = get(green_sector), --сектор левого двигателя
+	image = get(green_sector),
 	-- position = {1398, 654, 108, 108},
-	position = coords_converter(1395, 654, 108, 108),
+	position = coords_converter(1398, 654, 108, 108),
 	angle = function()
 		return get(eng1_temp)
 	end,
@@ -89,6 +100,20 @@ needle{
 		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
 	end,
 },
+
+---- Сектор температуры второго двигателя
+needle{ 
+	image = get(green_sector),
+	position = coords_converter(1511, 654, 108, 108),
+	angle = function()
+		return get(eng2_temp)
+	end,
+	visible = function()
+		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
+},
+
+---- Дисплей ДВИГ
 texture{
 	image = get(eng_mnemo),
 	position = coords(1626, 607, 472, 621),
@@ -96,6 +121,40 @@ texture{
     return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
 	end,
 },
+
+---- Температура первого двигателя
+digitstape {
+    -- position = { 1404, 688, 35, 15},
+    position = coords_converter(1404, 688, 35, 15),
+    image = digitsImage,
+    digits = 3,
+    showLeadingZeros = false,
+    allowNonRound = true,
+    value = function()
+      return get(ENGN_EGT_c1)
+    end,
+    valueEnabler = function()
+      return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+    end,
+};
+
+---- Температура второго двигателя
+digitstape {
+    -- position = { 1522, 688, 34, 15},
+    position = coords_converter(1522, 688, 34, 15),
+    image = digitsImage,
+    digits = 3,
+    showLeadingZeros = false,
+    allowNonRound = true,
+    value = function()
+      return get(ENGN_EGT_c2)
+    end,
+    valueEnabler = function()
+      return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+    end,
+};	
+
+---- Переключение видимости дисплея двигателей  
 switch {
 	position = coords(1370, 146, 46, 45),
   state = function()
@@ -120,26 +179,27 @@ switch {
   end,
 },
 
+-- Связь
 
--- СВЯЗЬ (ПРОСЛУШ)
+---- (ПРОСЛУШ)
 texture{ 
 	image = get(rotary_small),
 	position = coords(595, 608, 50, 50),
 },
 
--- СВЯЗЬ (РАДИО) 
+---- (РАДИО) 
 texture{ 
 	image = get(rotary_small),
 	position = coords(398, 608, 50, 50),
 },
 
--- СВЯЗЬ (СПУ) 
+---- (СПУ) 
 texture{ 
 	image = get(rotary_small),
 	position = coords(353, 663, 50, 50),
 },
 
--- СВЯЗЬ (ДИН) 
+---- (ДИН) 
 texture{ 
 	image = get(rotary_small),
 	position = coords(640, 663, 50, 50),
@@ -147,16 +207,4 @@ texture{
 },
 
 
--- texture{ 
--- 	image = get(rotary_small),
--- 	position = {329, 391, 50, 50},
--- },
--- texture{ --СЭС
--- 	image = get(yellow_light),
--- 	position = {1350, 1049, 39, 8},
--- 	visible = function()
--- 		return get(dc_bus) == 1
--- 	end,
--- },
-------------------------------------------------------------------------------------------------------------------------------------------
 }
