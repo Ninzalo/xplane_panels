@@ -41,6 +41,7 @@ defineProperty("rotary_small", loadImage("rotary_small.png"))
 defineProperty("yellow_light", loadImage("yellow_light.png"))
 defineProperty("green_sector", loadImage("green_sector.png"))
 defineProperty("eng_mnemo", loadImage("eng_mnemo.png"))
+defineProperty("digitsImage", loadImage("white_digit_strip.png", 0, 0, 16, 196))
 -- local switch_sound = loadSample('Custom Sounds/metal_switch.wav')
 -- local switch_plastic = loadSample('Custom Sounds/plastic_switch.wav')
 local switch_push = false
