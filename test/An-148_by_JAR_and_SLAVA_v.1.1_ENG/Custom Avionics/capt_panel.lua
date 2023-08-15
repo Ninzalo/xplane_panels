@@ -119,7 +119,7 @@ needle{
 ---- Сектор давления масла первого двигателя
 needle{
 	image = get(green_sector),
-	position = coords_converter(1402, 374, 68, 68),
+	position = coords_converter(1402, 375, 68, 68),
 	angle = function()
 		return map(get(oil_pressure1), 0, 5, 0, 180)
 	end,
@@ -131,7 +131,7 @@ needle{
 ---- Сектор давления масла второго двигателя
 needle{
 	image = get(green_sector),
-	position = coords_converter(1529, 374, 68, 68),
+	position = coords_converter(1529, 375, 68, 68),
 	angle = function()
 		return map(get(oil_pressure2), 0, 5, 0, 180)
 	end,
