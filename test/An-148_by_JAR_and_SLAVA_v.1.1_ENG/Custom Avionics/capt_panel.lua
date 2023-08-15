@@ -19,6 +19,11 @@ defineProperty("oil_pressure1", globalPropertyf("sim/cockpit2/engine/indicators/
 defineProperty("oil_pressure2", globalPropertyf("sim/cockpit2/engine/indicators/oil_pressure_psi[1]"))
 
 defineProperty("ENGN_N1_1", globalPropertyf("sim/flightmodel/engine/ENGN_N1_[0]"))
+defineProperty("ENGN_N1_2", globalPropertyf("sim/flightmodel/engine/ENGN_N1_[1]"))
+defineProperty("ENGN_N2_1", globalPropertyf("sim/flightmodel/engine/ENGN_N2_[0]"))
+defineProperty("ENGN_N2_2", globalPropertyf("sim/flightmodel/engine/ENGN_N2_[1]"))
+defineProperty("fuel_flow_kg_sec1", globalPropertyf("sim/cockpit2/engine/indicators/fuel_flow_kg_sec[0]"))
+defineProperty("fuel_flow_kg_sec2", globalPropertyf("sim/cockpit2/engine/indicators/fuel_flow_kg_sec[1]"))
 -----------------
 local mfi_mnemo_eng = 0
 
@@ -219,6 +224,86 @@ valueEnabler = function()
 end,
 };
 
+
+  -- eng2_n1 digits
+digitstape {
+    -- position = { 1545, 635, 34, 15},
+    position = coords_converter(1545, 635, 34, 15),
+    image = digitsImage,
+    digits = 3,
+    showLeadingZeros = false,
+allowNonRound = true,
+    value = function()
+  return get(ENGN_N1_2)
+end,
+valueEnabler = function()
+  return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+end,
+};
+---------------------------------------------------------------------
+  -- eng1_n2 digits
+digitstape {
+    -- position = { 1447, 608, 35, 15},
+    position = coords_converter(1447, 608, 35, 15),
+    image = digitsImage,
+    digits = 3,
+    showLeadingZeros = false,
+allowNonRound = true,
+    value = function()
+  return get(ENGN_N2_1)
+end,
+valueEnabler = function()
+  return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+end,
+};
+---------------------------------------------------------------------
+  -- eng2_n2 digits
+digitstape {
+    -- position = { 1545, 608, 34, 15},
+    position = coords_converter(1545, 608, 34, 15),
+    image = digitsImage,
+    digits = 3,
+    showLeadingZeros = false,
+allowNonRound = true,
+    value = function()
+  return get(ENGN_N2_2)
+end,
+valueEnabler = function()
+  return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+end,
+};
+---------------------------------------------------------------------
+-- eng1_ff digits
+digitstape {
+    -- position = { 1447, 575, 35, 15},
+    position = coords_converter(1447, 575, 35, 15),
+    image = digitsImage,
+    digits = 4,
+    showLeadingZeros = false,
+allowNonRound = true,
+    value = function()
+  return get(fuel_flow_kg_sec1) * 3600
+end,
+valueEnabler = function()
+  return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+end,
+};
+---------------------------------------------------------------------
+  -- eng2_ff digits
+digitstape {
+    -- position = { 1545, 575, 34, 15},
+    position = coords_converter(1545, 575, 34, 15),
+    image = digitsImage,
+    digits = 4,
+    showLeadingZeros = false,
+allowNonRound = true,
+    value = function()
+  return get(fuel_flow_kg_sec2) * 3600
+end,
+valueEnabler = function()
+  return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+end,
+};
 ---- Переключение видимости дисплея двигателей  
 switch {
 	position = coords(1370, 146, 46, 45),
