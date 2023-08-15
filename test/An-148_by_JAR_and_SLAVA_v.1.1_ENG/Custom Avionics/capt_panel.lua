@@ -17,15 +17,24 @@ defineProperty("ENGN_EGT_c2", globalPropertyf("sim/flightmodel/engine/ENGN_EGT_c
 -- Давление масла первого и второго двигателей (сектор)
 defineProperty("oil_pressure1", globalPropertyf("sim/cockpit2/engine/indicators/oil_pressure_psi[0]"))
 defineProperty("oil_pressure2", globalPropertyf("sim/cockpit2/engine/indicators/oil_pressure_psi[1]"))
-
+-- Первый и второй двигатели Nнд% (цифры) 
 defineProperty("ENGN_N1_1", globalPropertyf("sim/flightmodel/engine/ENGN_N1_[0]"))
 defineProperty("ENGN_N1_2", globalPropertyf("sim/flightmodel/engine/ENGN_N1_[1]"))
+-- Первый и второй двигатели Nвд% (цифры)
 defineProperty("ENGN_N2_1", globalPropertyf("sim/flightmodel/engine/ENGN_N2_[0]"))
 defineProperty("ENGN_N2_2", globalPropertyf("sim/flightmodel/engine/ENGN_N2_[1]"))
+-- Расход топлива первого и второго двигателей Gт кг/ч (цифры)
 defineProperty("fuel_flow_kg_sec1", globalPropertyf("sim/cockpit2/engine/indicators/fuel_flow_kg_sec[0]"))
 defineProperty("fuel_flow_kg_sec2", globalPropertyf("sim/cockpit2/engine/indicators/fuel_flow_kg_sec[1]"))
+-- Первый и второй двигатели Nв%
 defineProperty("engine_speed_rpm1", globalPropertyf("sim/cockpit2/engine/indicators/engine_speed_rpm[0]"))
 defineProperty("engine_speed_rpm2", globalPropertyf("sim/cockpit2/engine/indicators/engine_speed_rpm[1]"))
+-- Температура масла первого и второго двигателей Тм С° 
+defineProperty("oil_temperature1", globalPropertyf("sim/cockpit2/engine/indicators/oil_temperature_deg_C[0]"))
+defineProperty("oil_temperature2", globalPropertyf("sim/cockpit2/engine/indicators/oil_temperature_deg_C[1]"))
+-- Количество масла первого и второго двигателей Qм л 
+defineProperty("oil_quantity1", globalPropertyf("sim/cockpit2/engine/indicators/oil_quantity_ratio[0]"))
+defineProperty("oil_quantity2", globalPropertyf("sim/cockpit2/engine/indicators/oil_quantity_ratio[1]"))
 -----------------
 local mfi_mnemo_eng = 0
 
@@ -39,6 +48,7 @@ defineProperty("yellow_light", loadImage("yellow_light.png"))
 defineProperty("green_sector", loadImage("green_sector.png"))
 defineProperty("eng_mnemo", loadImage("eng_mnemo.png"))
 defineProperty("digitsImage", loadImage("white_digit_strip.png", 0, 0, 16, 196))
+defineProperty("oil_tape", loadImage("oil_tape.png"))
 
 local switch_push = false
 
@@ -336,6 +346,67 @@ digitstape {
   valueEnabler = function()
     return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
   end,
+},
+
+---- Температура масла первого двигателя Тм С° (цифры)
+digitstape {
+  -- position = { 1447, 359, 25, 15},
+  position = coords_converter(1447, 359, 25, 15),
+  image = digitsImage,
+  digits = 3,
+  showLeadingZeros = false,
+  allowNonRound = true,
+  value = function()
+    return get(oil_temperature1)
+  end,
+  valueEnabler = function()
+    return get(mfi_mnemo_eng) == 1
+  end,
+  visible = function()
+    return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+  end,
+},
+
+---- Температура масла второго двигателя Тм С° (цифры)
+digitstape {
+  -- position = { 1572, 359, 25, 15},
+  position = coords_converter(1572, 359, 25, 15),
+  image = digitsImage,
+  digits = 3,
+  showLeadingZeros = false,
+  allowNonRound = true,
+  value = function()
+    return get(oil_temperature2)
+  end,
+  valueEnabler = function()
+    return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+  end,
+},
+
+---- Количество масла первого двигателя Qм л
+tape {
+  position = coords_converter(1485, 352, 9, 92),
+  image = get(oil_tape),
+  window = {1.0, 0.5},
+  scrollY = function()
+		return map(get(oil_quantity1), 0, 1, 0, 0.5)
+	end,
+	visible = function()
+		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
+},
+
+---- Количество масла второго двигателя Qм л
+tape {
+  position = coords_converter(1610, 352, 9, 92),
+  image = get(oil_tape),
+  window = {1.0, 0.5},
+  scrollY = function()
+		return map(get(oil_quantity2), 0, 1, 0, 0.5)
+	end,
+	visible = function()
+		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
 },
 
 ---- Переключение видимости дисплея двигателей  
