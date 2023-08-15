@@ -390,7 +390,7 @@ tape {
   image = get(oil_tape),
   window = {1.0, 0.5},
   scrollY = function()
-		return map(get(oil_quantity1), 0, 1, 0, 0.5)
+		return map(get(oil_quantity1), 0, 1, 0, 1)
 	end,
 	visible = function()
 		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
