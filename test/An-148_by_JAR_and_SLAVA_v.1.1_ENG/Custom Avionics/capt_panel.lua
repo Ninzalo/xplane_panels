@@ -78,6 +78,13 @@ texture{
     return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
 	end,
 },
+texture{
+	image = get(eng_mnemo),
+	position = coords(1626, 607, 472, 621),
+	visible = function()
+    return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
+	end,
+},
 needle{ 
 	image = get(green_sector), --сектор левого двигателя
 	-- position = {1398, 654, 108, 108},
@@ -87,13 +94,6 @@ needle{
 	end,
 	visible = function()
 		return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
-	end,
-},
-texture{
-	image = get(eng_mnemo),
-	position = coords(1626, 607, 472, 621),
-	visible = function()
-    return get(mfi_mnemo_eng) == 1 and get(dc_bus) == 1
 	end,
 },
 switch {
