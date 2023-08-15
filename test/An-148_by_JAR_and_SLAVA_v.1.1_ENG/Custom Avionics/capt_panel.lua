@@ -205,7 +205,8 @@ digitstape {
 
 -- eng1_n1 digits
 digitstape {
-    position = { 1447, 635, 35, 15},
+    -- position = { 1447, 635, 35, 15},
+    position = coords_converter(1447, 635, 35, 15),
     image = digitsImage,
     digits = 3,
     showLeadingZeros = false,
